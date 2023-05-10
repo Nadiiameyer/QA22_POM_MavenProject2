@@ -20,9 +20,9 @@ public class TestBase {
 
         driver.get("https://demoqa.com");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait((10));
     }
 
-    @AfterMethod(enabled = false)
+    @AfterMethod(enabled = true)
     public void tearDown() {driver.quit();}
 }

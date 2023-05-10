@@ -2,6 +2,7 @@ package tests.bookStorePage;
 
 import data.UserData;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.SidePanel;
@@ -16,10 +17,19 @@ public class LoginPageTests extends TestBase {
         new SidePanel(driver).selectLogin();
     }
 
-    @Test
+    @Test(enabled = false)
     public void loginPositiveTest() {
         new LoginPage(driver)
                 .login(UserData.USER_NAME,UserData.USER_PASSWORD)
                 .assertAccount(UserData.USER_NAME);
     }
+    @Test
+    @Parameters({"name","password"})
+    public void loginPositiveWithParametersTest(String name, String password) {
+        new LoginPage(driver)
+                .login(name,password)
+                .assertAccount(name);
+    }
+
+
 }
